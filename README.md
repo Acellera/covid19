@@ -2,6 +2,8 @@
 
 All data available in this repository is provided  under the Creative Commons Attribution 4.0 International Public License https://creativecommons.org/licenses/by/4.0/legalcode.
 
+Trajectories are available [here](https://software.acellera.com/docs/latest/filtered.zip).
+
 
 ## Methods
 
@@ -18,4 +20,3 @@ The protein (Mpro-x0104) was protonated at pH 7.0 using [ProteinPrepare](https:/
 ### AdaptiveGoal
 
 AdaptiveGoal protocol runs several simulations in parallel, and when a given number of simulations finishes, new simulations are launched. The key is that this new round (or epoch) of simulations starts from one of the frames of the previoulsy finished simulations. The protocol assigns a score to each frame, and the new round of simulations starts from the frames with highest score. The score of each frame is computed by an arbitrary, user-defined function. In this case, we gave a score of 1.0 to every frame where the ligand was closer than 20.0 Å to the binding site (defined by the location of Histidine 41 in the original structure) and the value of that distance multiplied by -1 if it was further away. Hence, once the ligand enters the sphere of 20 Å centered in the binding site, subsequent rounds of simulations will focus on exploring that area. This helps saving GPU time.
-
